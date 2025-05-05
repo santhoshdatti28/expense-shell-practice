@@ -32,7 +32,7 @@ CHECK_ROOT(){
 
 CHECK_ROOT
 
-mkdir -p /var/log/expense_shell_logs &>>$LOG_FILE_NAME
+mkdir -p /var/log/expense_shell_logs 
 
 dnf install nginx -y &>>$LOG_FILE_NAME
 VALIDATION $? "installing nginx"
