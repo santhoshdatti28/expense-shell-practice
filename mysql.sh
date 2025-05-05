@@ -48,10 +48,12 @@ VALIDATION $? "starting mysql server"
 mysql_secure_installation --set-root-pass ExpenseApp@1  &>>$LOG_FILE_NAME
 VALIDATION $? "setting password"
 
-mysql -h mysql.santhoshdatti.online -u root -pExpenseApp@1 -e 'show databases';
+mysql -h mysql.santhoshdatti.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]
 then 
+    echo "mysql password is not setup" &>>$LOG_FILE_NAME
     mysql_secure_installation --set-root-pass ExpenseApp@1  &>>$LOG_FILE_NAME
+    VALIDATION $? "setting mysql password"
 else
     echo "mysql password is already setup"
 fi
