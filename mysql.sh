@@ -27,6 +27,7 @@ CHECK_ROOT(){
     then
         echo "ERROR: you do not have access"
         exit 1
+    fi
 }
 
 CHECK_ROOT
