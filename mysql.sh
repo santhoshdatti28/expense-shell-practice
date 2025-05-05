@@ -55,5 +55,5 @@ then
     mysql_secure_installation --set-root-pass ExpenseApp@1  &>>$LOG_FILE_NAME
     VALIDATION $? "setting mysql password"
 else
-    echo "mysql password is..$Y already setup $N"
+    echo -e "mysql password is..$Y already setup $N"
 fi
