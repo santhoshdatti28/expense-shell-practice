@@ -45,8 +45,12 @@ VALIDATION $? "enabling nodejs"
 dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATION $? "installing nodejs"
 
-useradd expense &>>$LOG_FILE_NAME
-VALIDATION $? "expense user added"
+id expense 
+if [ $? -ne 0 ]
+then
+    useradd expense &>>$LOG_FILE_NAME
+    VALIDATION $? "expense user added"
+fi
 
 mkdir /app &>>$LOG_FILE_NAME
 VALIDATION $? "creating app directory"
