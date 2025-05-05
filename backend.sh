@@ -50,6 +50,8 @@ if [ $? -ne 0 ]
 then
     useradd expense &>>$LOG_FILE_NAME
     VALIDATION $? "expense user added"
+else
+    echo -e "user is already $Y existed $N"
 fi
 
 mkdir -p /app &>>$LOG_FILE_NAME
@@ -59,6 +61,8 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 VALIDATION $? "downloading the code"
 
 cd /app
+
+rm -rf /app *
 
 unzip /tmp/backend.zip &>>$LOG_FILE_NAME 
 VALIDATION $? "unzipping of the code"
